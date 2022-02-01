@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/register">
+
+    <fragment
+        android:id="@+id/register"
+        android:name="com.example.chatapp.register.Register"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register">
+        <action
+            android:id="@+id/action_register_to_login"
+            app:destination="@id/login" />
+        <action
+            android:id="@+id/action_register_to_currentMessages"
+            app:destination="@id/currentMessages" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/login"
+        android:name="com.example.chatapp.login.Login"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_login_to_currentMessages"
+            app:destination="@id/currentMessages" />
+    </fragment>
+    <fragment
+        android:id="@+id/newMessages"
+        android:name="com.example.chatapp.newMessages.NewMessages"
+        android:label="fragment_current_messages"
+        tools:layout="@layout/fragment_new_messages">
+        <action
+            android:id="@+id/action_newMessages_to_chatLogFragment"
+            app:destination="@id/chatLogFragment" />
+        <argument
+            android:name="userdata"
+            app:argType="com.example.chatapp.firebase.UserData" />
+    </fragment>
+    <fragment
+        android:id="@+id/currentMessages"
+        android:name="com.example.chatapp.currentMessages.CurrentMessages"
+        android:label="fragment_current_messages"
+        tools:layout="@layout/fragment_current_messages">
+        <action
+            android:id="@+id/action_currentMessages_to_newMessages"
+            app:destination="@id/newMessages" />
+        <action
+            android:id="@+id/action_currentMessages_to_chatLogFragment"
+            app:destination="@id/chatLogFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chatLogFragment"
+        android:name="com.example.chatapp.chatLog.ChatLogFragment"
+        android:label="fragment_chat_log"
+        tools:layout="@layout/fragment_chat_log" />
+</navigation>
